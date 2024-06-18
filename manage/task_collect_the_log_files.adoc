@@ -1,0 +1,28 @@
+---
+permalink: manage/task_collect_the_log_files.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Sie können Protokolldateien für ONTAP-Tools für VMware vSphere über die in der grafischen Benutzeroberfläche der ONTAP-Tools \(GUI\) verfügbare Option sammeln. Der technische Support fordert Sie möglicherweise auf, die Protokolldateien zu sammeln, damit Sie Probleme beheben können.' 
+---
+= Sammeln Sie die Protokolldateien
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Protokolldateien für ONTAP Tools für VMware vSphere über die in der Benutzeroberfläche des ONTAP Tools Managers verfügbare Option sammeln. Der technische Support fordert Sie möglicherweise auf, die Protokolldateien zu sammeln, damit Sie Probleme beheben können.
+
+*Schritte*
+
+. Start `\https://loadBalanceIP:8443/virtualization/ui/` Über den Browser mit den Administratoranmeldeinformationen für ONTAP-Tools, die während der Bereitstellung bereitgestellt werden.
+. Wählen Sie in der Seitenleiste *Log Bundles* aus.
++
+Dieser Vorgang kann mehrere Minuten dauern.
+
+. Wählen Sie *GENERATE*, um die Protokolldateien zu generieren.
+. Geben Sie die Bezeichnung für das Log Bundle ein und wählen Sie *GENERATE*.
++
+Laden Sie die Datei tar.gz herunter, und senden Sie sie an den technischen Support.
+
+

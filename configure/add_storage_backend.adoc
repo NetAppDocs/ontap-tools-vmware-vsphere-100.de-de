@@ -1,0 +1,30 @@
+---
+permalink: configure/add_storage_backend.html 
+sidebar: sidebar 
+keywords:  
+summary: Speicher-Back-Ends sind Systeme, die die EXSi-Hosts zur Datenspeicherung nutzen. 
+---
+= Storage-Back-End hinzufügen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Speicher-Back-Ends sind Systeme, die die EXSi-Hosts zur Datenspeicherung nutzen.
+
+*Über diese Aufgabe*
+
+Diese Aufgabe hilft Ihnen, den ONTAP-Cluster zu Bord zu nehmen.
+
+*Schritte*
+
+. Start `\https://loadBalanceIP:8443/virtualization/ui/` Über den Browser mit den Administratoranmeldeinformationen für ONTAP-Tools, die während der Bereitstellung bereitgestellt werden.
+. Wählen Sie in der Seitenleiste *Speicher-Backends* aus.
+. Wählen Sie *Hinzufügen*.
+. Geben Sie die IP-Adresse des Servers oder den FQDN, den Benutzernamen und das Kennwort ein, und wählen Sie *Hinzufügen*.
++
+
+NOTE: Es werden nur IPV4-Management-LIFs unterstützt.
+
+

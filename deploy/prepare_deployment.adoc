@@ -1,0 +1,69 @@
+---
+permalink: deploy/prepare_deployment.html 
+sidebar: sidebar 
+keywords:  
+summary: Sie sollten ONTAP-Tools in Ihrer Umgebung implementieren und die erforderlichen Parameter angeben, um die Appliance verwenden zu können. 
+---
+= Bereiten Sie die Implementierung von ONTAP Tools vor
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die ONTAP Tools für VMware vSphere unterstützen mehrere vCenter Server mit VASA Provider.
+
+Vor der Implementierung der ONTAP Tools für VMware vSphere sollten Sie sich der grundlegenden Storage-Backend-Anforderungen, Applikationsanforderungen und Lizenzanforderungen bewusst sein.
+Bevor Sie ONTAP Tools für VMware vSphere implementieren, sollten Sie gut planen, Ihre Implementierung zu planen und darüber zu entscheiden, wie Sie ONTAP Tools in Ihrer Umgebung konfigurieren möchten.
+
+
+
+== Bereitstellung wird vorbereitet
+
+Beachten Sie die folgenden Anforderungen an ONTAP-Tools, bevor Sie mit der Implementierung fortfahren:
+
+* Konfigurieren und richten Sie Ihre vCenter Server-Umgebung ein.
+* Laden Sie die Datei _.ova_ herunter.
+* Stellen Sie sicher, dass der Host oder der Ressourcenpool, in dem die OVA bereitgestellt wird, über die im Abschnitt *Anforderungen für die Bereitstellung der ONTAP-Tools* genannten Mindestressourcen verfügt.
+* Löschen Sie den Browser-Cache.
+* Für Load Balancer und Kubernetes API Server benötigen Sie zwei virtuelle IPs. Sie erhalten zwei kostenlose IPs im VLAN, das für die Implementierung verwendet wird und nach der Implementierung auf die Services zugreift.
+* Beschaffung von CA-Zertifikaten (Root-, Leaf- und Intermediate-Zertifikate) von der kommerziellen CA.
+* Bei einer Bereitstellung mit mehreren vCenter, bei der benutzerdefinierte CA-Zertifikate erforderlich sind, ordnen Sie den *Domain Name* zu, auf dem das Zertifikat ausgestellt wird, der *Virtual IP* zu. Führen Sie eine Ping-Überprüfung des Domänennamens durch, um zu prüfen, ob die Domäne auf die beabsichtigte IP aufgelöst wird.
+* Eine Storage-VM auf ONTAP mit aktiviertem NFS ist erforderlich. Führen Sie die folgenden Schritte aus, um die Storage-VM zu konfigurieren:
++
+** Lassen Sie Ihren ONTAP System Manager und die ONTAP CLI geöffnet.
+** Falls Sie eine neue Storage-VM erstellen möchten, melden Sie sich bei Ihrem ONTAP System Manager an und erstellen Sie eine Storage VM mit aktiviertem NFS.
+** Fügen Sie ein Aggregat mit mindestens 100GB hinzu.
+** So überprüfen Sie, ob das Aggregat erfolgreich hinzugefügt wurde:
++
+A) Melden Sie sich bei Ihrer ONTAP-CLI an
+
++
+b) Führen Sie den Befehl vserver show -fields aggr-list aus
+
++
+c) Wenn Ihr Aggregat nicht für Ihre Standard-Storage VM aufgeführt wurde, führen Sie den Befehl: vserver modify <Storage VM Name> -aggr-list <aggregate name> aus
+
++
+Um den Namen des Aggregats zu Ihrer Standard-Storage-VM hinzuzufügen, können Sie den folgenden Befehl in der ONTAP-CLI verwenden: _Aggr show_
+
++
+Dieser Befehl zeigt eine Liste der Aggregate auf dem Storage-System an, und Sie können den Namen des Aggregats finden, das Sie in der Spalte *Aggregat* verwenden müssen.
+
+** Für die Implementierungskonfiguration gibt es zwei Optionen: Eine Cluster-Zugangsdaten und die andere SVM-Zugangsdaten oder direkte SVM. Bei direkten SVM müssen Sie die Management-LIF für die SVM konfigurieren, bevor Sie mit der Implementierung beginnen. Überspringen Sie diese Informationen für Cluster-Anmeldedaten.
+** Stellen Sie sicher, dass eine Netzwerkroute vorhanden ist, melden Sie sich bei der ONTAP-CLI an, und führen Sie den Befehl Network Route show -vserver <Storage VM Name> aus
++
+Wenn es nicht existiert, loggen Sie sich in Ihre ONTAP-CLI ein und führen Sie die folgenden Befehle aus, net Route create -vserver <vserver name> -Destination <destination IP> -Gateway <gateway IP> -metric 20
+
+** Stellen Sie sicher, dass für die Storage-VM eine Exportrichtlinie vorhanden ist. Gehen Sie im ONTAP System Manager zu *Speicher* > *Speicher-VMs* > *[Name der Speicher-VM]* > *Einstellungen* > *Exportrichtlinien*. Wenn keine Exportrichtlinie vorhanden ist, folgen Sie dem nächsten Schritt.
+** Erstellen Sie eine Exportrichtlinie mit den folgenden Befehlen aus der ONTAP-CLI
++
+vserver-Richtlinie für den Export erstellen -vserver <Storage VM Name> -policyname <Export Policy Name> -clientmatch <ESXI-IP> -rorule any -rwrule any -Superuser any
+
++
+
+NOTE: Stellen Sie sicher, dass der _Superuser_-Wert nicht _none_ ist.
+
+
+
+

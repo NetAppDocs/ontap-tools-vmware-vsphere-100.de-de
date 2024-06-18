@@ -1,0 +1,19 @@
+---
+permalink: concepts/asup.html 
+sidebar: sidebar 
+keywords:  
+summary: AutoSupport ist ein Mechanismus, der proaktiv den Zustand Ihres Systems überwacht und automatisch Meldungen an den technischen Support von NetApp, Ihre interne Support-Abteilung und einen Support-Partner sendet. Obwohl AutoSupport Meldungen an den technischen Support standardmäßig aktiviert sind, müssen Sie die richtigen Optionen festlegen und einen gültigen Mail-Host besitzen, der Meldungen an Ihre interne Support-Abteilung gesendet hat. 
+---
+= AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+AutoSupport ist ein Mechanismus, der proaktiv den Zustand Ihres Systems überwacht und automatisch Meldungen an den technischen Support von NetApp, Ihre interne Support-Abteilung und einen Support-Partner sendet.
+
+AutoSupport ist standardmäßig aktiviert, wenn Sie das Storage-System zum ersten Mal konfigurieren. AutoSupport beginnt 24 Stunden nach Aktivierung von AutoSupport mit dem Senden von Meldungen an den technischen Support.
+
+Sie können AutoSupport nur zum Zeitpunkt der Bereitstellung aktivieren oder deaktivieren. Es wird empfohlen, die Funktion aktiviert zu lassen. Wenn auf dem Storage-System ein Problem auftritt, kann die Problembestimmung und -Behebung durch das Aktivieren von AutoSupport erheblich beschleunigt werden. Standardmäßig erfasst das System AutoSupport Informationen und speichert sie lokal, selbst wenn Sie AutoSupport deaktivieren.
+Für eine erfolgreiche Übertragung müssen Sie 216.240.21.18 // support.netapp.com URL in Ihrem Netzwerk angeben.

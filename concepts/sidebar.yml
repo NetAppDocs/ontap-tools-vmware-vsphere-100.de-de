@@ -1,0 +1,18 @@
+---
+section: concepts
+title: Konzepte
+entries:
+- title: ONTAP-Tools im Überblick
+  url: "/concepts/concept_ontap_tools_overview.html"
+- title: VASA Provider-Konfigurationen für VVols
+  url: "/concepts/concept_configure_vvols_datastores.html"
+- title: Rollenbasierte Zugriffssteuerung
+  entries:
+  - title: Überblick über die rollenbasierte Zugriffssteuerung für ONTAP-Tools
+    url: "/concepts/concept_vcenter_server_role_based_access_control_features_in_vsc_for_vmware_vsphere.html"
+  - title: Empfohlene ONTAP-Rollen bei der Verwendung von ONTAP Tools für VMware vSphere
+    url: "/concepts/concept_recommended_ontap_roles_when_using_vsc_for_vmware_vsphere.html"
+- title: Konfigurieren Sie Hochverfügbarkeit für ONTAP Tools
+  url: "/concepts/concept_configure_high_availability_for_ontap_tools_for_vmware_vsphere.html"
+- title: AutoSupport
+  url: "/concepts/asup.html"

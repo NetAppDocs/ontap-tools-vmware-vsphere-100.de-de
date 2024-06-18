@@ -1,0 +1,112 @@
+---
+sidebar: sidebar 
+permalink: deploy/qsg_10.html 
+keywords: QSG, ONTAP tools for VMware vSphere, Quick start guide, Installing 
+summary: Enthält Anweisungen zur Bereitstellung und Initialisierung von ONTAP Tools für VMware vSphere. 
+---
+= ONTAP-Tools für VMware vSphere Quick Start
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die ONTAP Tools für VMware vSphere sind ein einzelnes vCenter Server Plug-in, das ONTAP Tools und VASA Provider-Erweiterungen umfasst. ONTAP Tools werden für alle ONTAP vSphere Umgebungen empfohlen, da ESXi Host-Einstellungen konfiguriert und ONTAP Storage anhand von Best Practices bereitgestellt wird. Für die Unterstützung von Virtual Volumes (VVols) ist der VASA Provider erforderlich.
+
+
+
+== Installation wird vorbereitet
+
+Sie stellen das Plug-in als virtuelle Appliance bereit, wodurch Sie weniger Aufwand bei der Installation und Registrierung jedes einzelnen Produkts beim vCenter Server benötigen.
+
+
+
+=== Implementierungsanforderungen zu erfüllen
+
+Bevor Sie die ONTAP Tools für VMware vSphere implementieren, sollten Sie mit den Speicherplatzanforderungen für das Implementierungspaket und einigen grundlegenden Host-Systemanforderungen vertraut sein.
+
+Sie können die ONTAP-Tools entweder mit einem Windows vCenter-Server oder mit einer VMware vCenter Server VirtualAppliance (vCSA) verwenden. Sie müssen die ONTAP-Tools auf einer unterstützten vSphere implementieren, die das ESXi-System umfasst.
+
+* *Platzanforderungen für Installationspaket pro Knoten*
++
+** 10 GB bei Thin Provisioning-Installationen
+** 200 GB für Thick Provisioning-Installationen
+
+
+* *Größenanforderung Host-System pro Knoten*
+Der empfohlene Arbeitsspeicher gemäß der Größe der Implementierung und pro Node wird wie in der folgenden Tabelle dargestellt empfohlen:
+
+
+|===
+
+
+| Implementierungsart | CPUs | Arbeitsspeicher (GB) 
+
+
+| Klein (S) | 8 | 16 
+
+
+| Mittel (M) | 12 | 24 
+
+
+| Groß (L) | 16 | 32 
+|===
+
+
+== Minimale Storage- und Applikationsanforderungen:
+
+|===
+| Storage, Host und Applikationen | Versionsanforderungen 
+
+
+| ONTAP | ONTAP 9.10.1 , 9.11 , 9.12 und 9.13 
+
+
+| VMware vSphere | Die unterstützte Mindestversion von VMware ist 7.0.3. 
+
+
+| ESXi-Hosts | ESXi 7.0.3 oder höher 
+
+
+| VCenter Server | VCenter 7.0.3 
+
+
+| VASA-Provider | 3.0 
+
+
+| OVA-Anwendung | 10.0 
+|===
+Weitere Informationen finden Sie unter link:../deploy/concept_space_and_sizing_requirements_for_ontap_tools_for_vmware_vsphere.html["Anforderungen für die Implementierung der ONTAP Tools"]
+
+
+
+=== Anforderungen für ONTAP-Tools
+
+* Konfigurieren und richten Sie Ihre vCenter Server-Umgebung ein.
+* Laden Sie die .ova-Datei herunter.
+* Die Anmeldeinformationen für Ihre vCenter Server-Instanz.
+* Löschen Sie den Browser-Cache, um Probleme mit dem Browser-Cache während der Bereitstellung der ONTAP-Tools zu vermeiden.
+* Konfigurieren Sie das Standard-Gateway, das von der virtuellen Appliance verwendet werden soll, um auf ICMP-Pings zu reagieren.
+* Ein gültiger DNS-Hostname für die virtuelle Appliance.
+
+
+
+
+== Einsatz von ONTAP Tools
+
+.Schritte
+. Download `.zip` Datei, die Binärdateien und signierte Zertifikate vom enthält https://mysupport.netapp.com/site/products/all/details/otv/downloads-tab["NetApp Support Website"^] Auf einem vSphere Client System zur Bereitstellung der ONTAP Tools.
+. Extrahieren Sie die `.zip` Datei und implementieren Sie die `.ova` Datei:
+. Melden Sie sich beim vSphere-Server an.
+. Navigieren Sie zum Ressourcen-Pool oder Host, auf dem Sie die OVA bereitstellen möchten.
+. Klicken Sie mit der rechten Maustaste auf das erforderliche Rechenzentrum, und wählen Sie *OVF-Vorlage bereitstellen...*.
+. Sie können entweder die URL für die .ova-Datei eingeben oder in den Ordner navigieren, in dem die .ova-Datei gespeichert ist, und dann *Weiter* auswählen.
+. Geben Sie die erforderlichen Details ein, um die Implementierung abzuschließen.
+
+
+Sie können den Fortschritt der Bereitstellung auf der Registerkarte Aufgaben anzeigen und warten, bis die Bereitstellung abgeschlossen ist.

@@ -1,0 +1,76 @@
+---
+permalink: deploy/deployment_checklist.html 
+sidebar: sidebar 
+keywords:  
+summary: Die Checkliste hier hilft Ihnen, alle Informationen zur Hand zu haben, bevor Sie mit der Bereitstellung beginnen. 
+---
+= Implementierungs-Checkliste
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Checkliste hier hilft Ihnen, alle Informationen zur Hand zu haben, bevor Sie mit der Bereitstellung beginnen. Notieren Sie sich diese Werte für Ihr Setup, bevor Sie sie bereitstellen.
+
+Vor der Implementierung der ONTAP Tools für VMware vSphere sollten Sie sich der grundlegenden Storage-Backend-Anforderungen, Applikationsanforderungen und Lizenzanforderungen bewusst sein.
+Bevor Sie ONTAP Tools für VMware vSphere implementieren, sollten Sie gut planen, Ihre Implementierung zu planen und darüber zu entscheiden, wie Sie ONTAP Tools in Ihrer Umgebung konfigurieren möchten.
+
+*Erster Knoten und andere gemeinsame Felder*
+
+* VASA-Provider-Benutzername (*)
+* Administrator-Benutzername (*)
+* NTP-Server (für vCenter zur Zeitsynchronisierung bereitgestellt)
+
+
+*Zertifikatdetails*
+
+* Aktivieren Sie das benutzerdefinierte CA-Zertifikat
+* Stammzertifikate und Zwischenzertifikate (ignorieren, wenn selbstsigniert aktiviert ist)
+* Leaf-Zertifikat und privater Schlüssel (ignoriert, wenn selbstsigniertes aktiviert ist)
+* Domain Name (*) (ignoriert, wenn selbstsigniertes aktiviert ist)
+
+
+*Load Balancer und API Server Details*
+
+* Load Balancer-IP (*)
+* Virtuelle IP für K8s Kontrollebene (*)
+
+
+*ONTAP Details*
+
+* ONTAP Management-LIF (*) (Cluster-Management-IP)
+* ONTAP Daten LIF (*)
+* Storage-VM (*)
+* ONTAP-Cluster-Benutzername (*)
+* Aktivieren Sie Die Migration
+* Primäre VM
+* Name Der Inhaltsbibliothek (*)
+* OVF-Vorlagenname (*)
+* Hostname (*)
+* Benutzername (*)
+
+
+*First Node Network Details*
+
+* Hostname (*)
+* IP-Adresse (*)
+* Präfixlänge (nur für IPv6)
+* Netzmaske (nur für IPv4)(*)
+* Gateway(*)
+* Primärer DNS (*)
+* Sekundäres DNS (*)
+* Suchdomänen (*)
+
+
+*Second Node - Node Network Details*
+
+* Hostname (*)
+* IP-Adresse (*)
+
+
+*Dritter Knoten - Knoten Netzwerkdetails*
+
+* Hostname (*)
+* IP-Adresse (*)
+

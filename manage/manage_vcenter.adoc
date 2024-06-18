@@ -1,0 +1,118 @@
+---
+permalink: manage/manage_vcenter.html 
+sidebar: sidebar 
+keywords:  
+summary: VCenter sind zentrale Management-Plattformen, mit denen Sie Hosts, Virtual Machines und Storage-Back-Ends steuern können. 
+---
+= Management von vCenter
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+VCenter sind zentrale Management-Plattformen, mit denen Sie Hosts, Virtual Machines und Storage-Back-Ends steuern können.
+
+
+
+== VCenter hinzufügen
+
+Sie können mehrere vCenter mit einer Instanz von ONTAP Tools für VMware vCenter 10.0 hinzufügen und managen.
+
+*Schritte*
+
+. Start `\https://loadBalanceIP:8443/virtualization/ui/` Über den Browser mit den Administratoranmeldeinformationen für ONTAP-Tools, die während der Bereitstellung bereitgestellt werden.
+. Wählen Sie in der Seitenleiste vCenter aus
+. Wählen Sie *ADD* für Onboard-vCenters mit vCenter IP-Adresse/Hostname, Benutzername, Passwort und Port.
+. Navigieren Sie zur Seite *Speicher-Backend* und wählen Sie *zum integrierten Speicher-Backend hinzufügen* (ONTAP-Cluster) mit Hostname, Benutzername, Passwort und Port.
+
+
+Siehe link:../configure/task_configure_user_role_and_privileges.html["Liste der Mindestberechtigungen, die für einen nicht-Administrator-Cluster mit globalem Umfang erforderlich sind"].
+
+
+
+== Storage-Back-End mit vCenter verknüpfen oder trennen
+
+Die vCenter Listing-Seite zeigt die zugehörige Anzahl an Speicher-Back-Ends. Jedes vCenter hat die Möglichkeit, ein Storage-Back-End zuzuordnen oder zu deaktivieren
+Mit dieser Aufgabe können Sie eine Zuordnung zwischen Storage-Backend und dem Onboarding vCenter weltweit erstellen.
+
+*Schritte*
+
+. Start `\https://loadBalanceIP:8443/virtualization/ui/` Über den Browser mit den Administratoranmeldeinformationen für ONTAP-Tools, die während der Bereitstellung bereitgestellt werden.
+. Wählen Sie in der Seitenleiste vCenter aus.
+. Klicken Sie auf die vertikalen Auslassungspunkte gegenüber dem vCenter, die Sie mit Storage-Back-Ends verknüpfen oder trennen möchten.
+. Wählen Sie *Speicher-Backend verknüpfen oder trennen*, je nachdem, welche Aktion Sie durchführen möchten.
++
+Siehe link:../configure/task_configure_user_role_and_privileges.html["Liste der Mindestberechtigungen, die für einen nicht-Administrator-Cluster mit globalem Umfang erforderlich sind"].
+
+
+
+
+
+== VCenter ändern
+
+Führen Sie die folgenden Schritte aus, um die vCenter zu ändern.
+
+. Start `\https://loadBalanceIP:8443/virtualization/ui/` Über den Browser mit den Administratoranmeldeinformationen für ONTAP-Tools, die während der Bereitstellung bereitgestellt werden.
+. Wählen Sie in der Seitenleiste vCenter aus
+. Klicken Sie auf die vertikalen Auslassungspunkte gegenüber dem vCenter, das Sie ändern möchten, und wählen Sie *Ändern*.
+. Ändern Sie die vCenter-Details, und wählen Sie *Ändern*.
+
+
+
+
+== VCenter entfernen
+
+Sie müssen alle Speicher-Back-Ends entfernen, die mit vCenter verbunden sind, bevor Sie es entfernen.
+
+. Start `\https://loadBalanceIP:8443/virtualization/ui/` Über den Browser mit den Administratoranmeldeinformationen für ONTAP-Tools, die während der Bereitstellung bereitgestellt werden.
+. Wählen Sie in der Seitenleiste vCenter aus
+. Klicken Sie auf die vertikalen Auslassungspunkte gegen das vCenter, das Sie entfernen möchten, und wählen Sie *Entfernen*.
++
+
+NOTE: Sobald Sie das vCenter entfernt haben, wird es von der Anwendung nicht mehr gepflegt.
+
+
+
+
+
+== Speicherschwellenwert verwalten
+
+Verwenden Sie die folgende get Threshold API, um die konfigurierten Storage-Grenzwerte für Volume und Aggregat abzurufen.
+
+[listing]
+----
+GET​/virtualization​/api​/v1​/vcenters​/{vcguid}​/storage-thresholds
+----
+Beispiele:
+Rufen Sie die Storage Schwellenwerten pro vcenter von vcenter GUID ab
+
+[listing]
+----
+GET "/api/v1/vcenters/beded9ad-6bbb-4c9e-b4c6-691250bfe2da/storage-thresholds"
+----
+Verwenden Sie den folgenden PATCH-Konfigurationsalarm für Lautstärke und Aggregat, um eine Benachrichtigung zu generieren, wenn konfigurierte Grenzwerte erreicht werden.
+
+[listing]
+----
+PATCH​/virtualization​/api​/v1​/vcenters​/{vcguid}​/storage-thresholds
+----
+Beispiele:
+Aktualisieren Sie die Storage Thresholds per vcenter by vcenter GUID. Die Standardgrenzwerte sind 80 % für nahezu voll und 90 % für voll.
+Ändern aller Schwellenwerteinstellungen
+
+[listing]
+----
+{{{}PATCH "/api/v1/vcenters/beded9ad-6bbb-4c9e-b4c6-691250bfe2da/storage-thresholds"
+Request Body
+{
+"volume":
+
+{ "nearly_full_percent": 80, "full_percent": 90 }
+,
+"aggregate": {
+"nearly_full_percent": 80,
+"full_percent": 90
+}
+}{}}}{}
+----

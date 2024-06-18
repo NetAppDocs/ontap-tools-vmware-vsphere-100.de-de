@@ -1,0 +1,33 @@
+---
+permalink: concepts/concept_configure_high_availability_for_ontap_tools_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Die ONTAP Tools unterstützen eine hochverfügbare \(HA\)-Konfiguration, die eine unterbrechungsfreie Funktionalität von ONTAP Tools bei Ausfällen ermöglicht.' 
+---
+= Konfigurieren Sie Hochverfügbarkeit für ONTAP Tools
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die ONTAP Tools unterstützen eine HA-Konfiguration (High Availability), um den unterbrechungsfreien Betrieb von ONTAP Tools bei einem Ausfall sicherzustellen.
+
+Die ONTAP Tools basieren auf der VMware vSphere HA-Funktion (High Availability, Hochverfügbarkeit) und der vSphere-Fehlertoleranz (FT)-Funktion, um eine hohe Verfügbarkeit zu gewährleisten. Die Hochverfügbarkeitslösung (HA) sorgt für ein schnelles Recovery nach Ausfällen, die auf folgende Komponenten zurückzuführen sind:
+
+* Host-Ausfall
++
+
+NOTE: Es wird nur der Ausfall eines einzelnen Nodes unterstützt.
+
+* Netzwerkausfall
+* Fehler bei Virtual Machine (Ausfall des Gastbetriebssystems)
+* Absturz der Applikation (ONTAP-Tools)
+
+
+Um Hochverfügbarkeit zu gewährleisten, ist für ONTAP Tools keine zusätzliche Konfiguration erforderlich. Nur vCenter-Server und ESXi-Hosts müssen mit der VMware vSphere HA-Funktion oder der vSphere FT-Funktion basierend auf ihren Anforderungen konfiguriert werden. Sowohl HA als AUCH FT erfordern Cluster-Hosts zusammen mit Shared Storage. FT hat zusätzliche Anforderungen und Einschränkungen.
+
+Zusätzlich zur VMware vSphere HA Lösung und der vSphere FT Lösung unterstützen ONTAP Tools auch dabei, die ONTAP Tools ständig verfügbar zu halten.
+
+
+NOTE: VCenter HA wird nicht durch ONTAP Tools unterstützt.

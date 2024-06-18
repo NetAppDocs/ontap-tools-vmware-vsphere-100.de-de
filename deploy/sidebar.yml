@@ -1,0 +1,18 @@
+---
+section: deploy
+title: Implementierung von ONTAP Tools
+entries:
+- title: ONTAP-Tools Schnellstartanleitung
+  url: "/deploy/qsg_10.html"
+- title: Anforderungen für die Implementierung der ONTAP Tools
+  url: "/deploy/concept_space_and_sizing_requirements_for_ontap_tools_for_vmware_vsphere.html"
+- title: So laden Sie ONTAP-Tools herunter
+  url: "/deploy/concept_how_to_download_ontap_tools.html"
+- title: Implementierungs-Checkliste
+  url: "/deploy/deployment_checklist.html"
+- title: Bereiten Sie die Implementierung von ONTAP Tools vor
+  url: "/deploy/prepare_deployment.html"
+- title: Implementierung einer Einzel-Node-Konfiguration ohne HA
+  url: "/deploy/nonha_deployment.html"
+- title: Bereitstellen einer HA-Konfiguration mit drei Nodes
+  url: "/deploy/ha_three_node.html"

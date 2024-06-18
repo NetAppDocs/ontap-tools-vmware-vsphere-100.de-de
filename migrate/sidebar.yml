@@ -1,0 +1,6 @@
+---
+section: migrate
+title: Migration der ONTAP-Tools
+entries:
+- title: Migrieren Sie auf die neueste Version der ONTAP-Tools
+  url: "/migrate/migrate_to_ng.html"

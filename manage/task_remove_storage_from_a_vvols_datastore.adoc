@@ -1,0 +1,57 @@
+---
+permalink: manage/task_remove_storage_from_a_vvols_datastore.html 
+sidebar: sidebar 
+keywords: Remove vVol datastore 
+summary: 'Über diese API wird der VMware Virtual Volumes (VVols) Datastore aus dem Storage gelöscht.' 
+---
+= VVols Datastore löschen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Über diese API wird der VMware Virtual Volumes (VVols) Datastore aus dem Storage gelöscht.
+
+*Über diese Aufgabe*
+
+Ein VVols-Datastore existiert, solange mindestens ein FlexVol-Volume auf dem Datastore verfügbar ist. Wenn Sie einen VVols-Datastore in einem HA-Cluster löschen möchten, müssen Sie den Datastore zunächst von allen Hosts im HA-Cluster abmounten und anschließend den Ordner _.vsphere-HA_ manuell über die vCenter-Server-Benutzeroberfläche löschen.
+
+*Schritte*
+
+Löschen Sie den VVols Datastore über die folgende API.
+
+[listing]
+----
+DELETE
+​/virtualization​/api​/v1​/vcenters​/{vcguid}​/vvols​/datastores​/{moref}
+----
+Beispiele
+
+* VVols Datastore löschen und Volumes aus dem Storage löschen
+
+
+[listing]
+----
+  DELETE /api/v1/vcenters/cdded9ad-6bsd-4c9e-b44g-691250bfe2df/vvols/datastores/datastore-28?delete_volumes=true
+----
+
+NOTE: Durch Löschen des VVols Datastore Workflows werden Datastore-Volumes gelöscht, wenn Sie die Markierung delete_Volume als wahr übergeben haben, unabhängig davon, ob das Datastore-Volume gemanagt oder nicht gemanagt wird.
+
+* Löschen Sie den VVols-Datastore und löschen Sie keine Volumes aus dem Storage
+
+
+[listing]
+----
+  DELETE /api/v1/vcenters/cdded9ad-6bsd-4c9e-b44g-691250bfe2df/vvols/datastores/datastore-28?delete_volumes=false
+----
+Antwort:
+
+[listing]
+----
+{
+
+    "id": "1889"
+
+}
+----

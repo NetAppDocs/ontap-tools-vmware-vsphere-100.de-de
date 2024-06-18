@@ -1,0 +1,53 @@
+---
+permalink: manage/storage_backend.html 
+sidebar: sidebar 
+keywords:  
+summary: Speicher-Back-Ends sind Systeme, die die EXSi-Hosts zur Datenspeicherung nutzen. 
+---
+= Management des Storage-Back-End
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Speicher-Back-Ends sind Systeme, die die EXSi-Hosts zur Datenspeicherung nutzen.
+
+
+
+== Storage-Back-End hinzufügen
+
+Gehen Sie wie folgt vor, um Speicher-Back-Ends hinzuzufügen.
+
+*Schritte*
+
+. Start `\https://loadBalanceIP:8443/virtualization/ui/` Über den Browser mit den Administratoranmeldeinformationen für ONTAP-Tools, die während der Bereitstellung bereitgestellt werden.
+. Wählen Sie in der Seitenleiste *Speicher-Backends* aus.
+. Wählen Sie *Hinzufügen*.
+
+
+
+
+== Storage-Back-End ändern
+
+Führen Sie die folgenden Schritte aus, um das vorhandene Speicher-Back-End zu ändern.
+
+. Start `\https://loadBalanceIP:8443/virtualization/ui/` Über den Browser mit den Administratoranmeldeinformationen für ONTAP-Tools, die während der Bereitstellung bereitgestellt werden.
+. Wählen Sie in der Seitenleiste Speicher-Back-Ends aus.
+. Wählen Sie das *Speicher-Backend* aus, das Sie ändern möchten
+. Klicken Sie auf das vertikale Auslassungsmenü und wählen Sie *Ändern*.
+. Geben Sie den *Username* und das *Passwort* ein, um das Speicher-Backend zu ändern.
+
+
+
+
+== Entfernen Sie das Storage-Back-End
+
+Sie müssen alle mit dem Speicher-Back-End verbundenen Datenspeicher löschen, bevor Sie das Speicher-Back-End entfernen.
+Gehen Sie wie folgt vor, um das Speicher-Back-End zu entfernen.
+
+. Start `\https://loadBalanceIP:8443/virtualization/ui/` Über den Browser mit den Administratoranmeldeinformationen für ONTAP-Tools, die während der Bereitstellung bereitgestellt werden.
+. Wählen Sie in der Seitenleiste *Speicher-Backends* aus.
+. Wählen Sie das Storage-Backend aus, das Sie entfernen möchten
+. Klicken Sie auf das vertikale Auslassungsmenü und wählen Sie *Entfernen*.
+

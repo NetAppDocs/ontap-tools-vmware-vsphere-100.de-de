@@ -1,0 +1,30 @@
+---
+permalink: configure/associate_storage_backend.html 
+sidebar: sidebar 
+keywords:  
+summary: Info erforderlich. 
+---
+= Zuordnen des Storage-Back-End zu vCenter
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die vCenter Listing-Seite zeigt die zugehörige Anzahl an Speicher-Back-Ends. Jedes vCenter bietet die Möglichkeit, ein Storage-Back-End zuzuordnen
+
+*Über diese Aufgabe*
+
+Mit dieser Aufgabe können Sie eine Zuordnung zwischen Storage-Backend und dem Onboarding vCenter weltweit erstellen.
+
+*Schritte*
+
+. Start `\https://loadBalanceIP:8443/virtualization/ui/` Über den Browser mit den Administratoranmeldeinformationen für ONTAP-Tools, die während der Bereitstellung bereitgestellt werden.
+. Wählen Sie in der Seitenleiste vCenter aus.
+. Klicken Sie auf die vertikalen Ellipsen gegenüber dem vCenter, die Sie mit Storage-Back-Ends verknüpfen möchten.
+. Wählen Sie im Popup-Fenster aus der Dropdown-Liste das Storage-Back-End aus.
+. Wählen Sie die Option *Speicher-Backend zuordnen*, um vCenter mit dem erforderlichen Speicher-Backend zu verknüpfen.
++
+Siehe link:../configure/task_configure_user_role_and_privileges.html["Liste der Mindestberechtigungen, die für einen nicht-Administrator-Cluster mit globalem Umfang erforderlich sind"].
+
+

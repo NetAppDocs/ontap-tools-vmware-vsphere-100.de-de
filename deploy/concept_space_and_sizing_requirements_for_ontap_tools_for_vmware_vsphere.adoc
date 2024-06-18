@@ -1,0 +1,112 @@
+---
+permalink: deploy/concept_space_and_sizing_requirements_for_ontap_tools_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords: ONTAP tools,Storage Replication Adapter 
+summary: Vor der Bereitstellung der ONTAP Tools für VMware vSphere sollten Sie mit den Speicherplatzanforderungen für das Deployment-Paket und einigen grundlegenden Anforderungen an das Host-System vertraut sein. 
+---
+= Anforderungen für die Implementierung der ONTAP Tools
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vor der Bereitstellung der ONTAP Tools für VMware vSphere sollten Sie mit den Speicherplatzanforderungen für das Deployment-Paket und einigen grundlegenden Anforderungen an das Host-System vertraut sein.
+
+Sie können die ONTAP-Tools entweder mit einem Windows vCenter-Server oder mit einer virtuellen VMware vCenter Server-Appliance (vCSA) verwenden. Sie müssen die ONTAP-Tools auf einer unterstützten vSphere implementieren, die das ESXi-System umfasst.
+
+* *Platzanforderungen für Installationspaket pro Knoten*
++
+** 10 GB bei Thin Provisioning-Installationen
+** 200 GB für Thick Provisioning-Installationen
+
+
+* *Größenanforderung Host-System pro Knoten*
+Der empfohlene Arbeitsspeicher gemäß der Größe der Implementierung und pro Node wird wie in der folgenden Tabelle dargestellt empfohlen:
+
+
+|===
+
+
+| Implementierungsart | CPUs | Arbeitsspeicher (GB) 
+
+
+| Klein (S) | 8 | 16 
+
+
+| Mittel (M) | 12 | 24 
+
+
+| Groß (L) | 16 | 32 
+|===
+
+
+== Minimale Storage- und Applikationsanforderungen:
+
+|===
+| Storage, Host und Applikationen | Versionsanforderungen 
+
+
+| ONTAP | ONTAP 9.10.1 , 9.11 , 9.12 und 9.13 
+
+
+| VMware vSphere | Die unterstützte Mindestversion von VMware ist 7.0.3. 
+
+
+| ESXi-Hosts | ESXi 7.0.3 oder höher 
+
+
+| VCenter Server | VCenter 7.0.3 
+
+
+| VASA-Provider | 3.0 
+
+
+| OVA-Anwendung | 10.0 
+|===
+Das Interoperabilitäts-Matrix-Tool (IMT) enthält aktuelle Informationen zu den unterstützten Versionen von ONTAP, vCenter Server, ESXi-Hosts und Plug-in-Applikationen.
+
+https://imt.netapp.com/matrix/imt.jsp?components=105475;&solution=1777&isHWU&src=IMT["Interoperabilitäts-Matrix-Tool"^]
+
+
+
+== Weitere Implementierungsüberlegungen
+
+Sie müssen bei der Anpassung der ONTAP Tools an die Implementierung nur wenige Anforderungen berücksichtigen.
+
+
+
+=== Benutzerkennwort der Anwendung
+
+Dies ist das dem Administratorkonto zugewiesene Kennwort. Aus Sicherheitsgründen wird empfohlen, dass das Passwort acht bis dreißig Zeichen lang ist und mindestens ein oberes, ein unteres, eine Ziffer und ein Sonderzeichen enthält. Passwort läuft nach 90 Tagen ab.
+
+
+
+=== Anmeldedaten für die Appliance-Wartungskonsole
+
+Sie müssen über den Benutzernamen „`maint`“ auf die Wartungskonsole zugreifen. Sie können das Passwort für den Benutzer „`maint`“ während der Bereitstellung festlegen. Sie können das Passwort über das Menü Anwendungskonfiguration der Wartungskonsole Ihrer ONTAP-Tools ändern.
+
+
+
+=== IP-Adresse des vCenter Server
+
+* Sie sollten die IP-Adresse (IPv4) der vCenter Server-Instanz angeben, für die Sie ONTAP-Tools registrieren möchten.
++
+Der Typ der generierten ONTAP-Tools und VASA-Zertifikate hängt von der bei der Bereitstellung angegebenen IP-Adresse (IPv4) ab.
+
+* Die IP-Adresse der ONTAP-Tools, die für die Registrierung bei vCenter Server verwendet wird, hängt vom Typ der IP-Adresse (IPv4) des vCenter Servers ab, die im Bereitstellungsassistenten eingegeben wurde.
++
+Sowohl die ONTAP-Tools als auch die VASA-Zertifikate werden unter Verwendung derselben IP-Adresse generiert, die bei der vCenter Server-Registrierung verwendet wird.
+
+* Stellen Sie sicher, dass VMs nicht während der Installation migriert werden.
++
+
+NOTE: IPv6 wird in den ONTAP-Tools für die VMware vSphere 10.0-Version nicht unterstützt.
+
+
+
+
+
+=== Netzwerkeigenschaften von Appliances
+
+Geben Sie einen gültigen DNS-Hostnamen (nicht qualifiziert) sowie die statische IP-Adresse für die ONTAP-Tools und die anderen Netzwerkparameter an. DHCP wird in den ONTAP-Tools für die VMware vSphere 10.0-Version nicht unterstützt. Alle diese Parameter sind für eine ordnungsgemäße Installation und Betrieb erforderlich.

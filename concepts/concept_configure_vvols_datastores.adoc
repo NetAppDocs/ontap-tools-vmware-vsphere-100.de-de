@@ -1,0 +1,66 @@
+---
+permalink: concepts/concept_configure_vvols_datastores.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Über den VASA Provider für ONTAP lassen sich VMware Virtual Volumes \ (VVols\) erstellen und managen. Sie können einen VVols-Datastore bereitstellen, bearbeiten, mounten und löschen. Sie können auch Storage zum VVols Datastore hinzufügen oder Storage aus dem VVols Datastore entfernen, um mehr Flexibilität zu erzielen.' 
+---
+= VASA Provider-Konfigurationen für VVols
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Über den VASA Provider für ONTAP lassen sich VMware Virtual Volumes (VVols) erstellen und managen. Sie können einen VVols-Datastore bereitstellen, bearbeiten, mounten und löschen. Sie können auch Storage zum VVols Datastore hinzufügen oder Storage aus dem VVols Datastore entfernen, um mehr Flexibilität zu erzielen.
+
+Ein VVols-Datastore besteht aus einem oder mehreren FlexVol Volumes innerhalb eines Storage-Containers (auch als Backing Storage bezeichnet). Eine Virtual Machine kann auf einen VVols oder mehrere VVols Datastores verteilt werden.
+
+Sie können einen VVols-Datastore erstellen, der über mehrere FlexVol Volumes verfügt, müssen jedoch alle FlexVol Volumes im Storage-Container dasselbe Protokoll (NFS oder iSCSI) und dieselben Storage Virtual Machines (SVMs) verwenden.
+
+
+NOTE: Daher empfiehlt es sich, mehrere FlexVol Volumes in einen VVols-Datastore einzubeziehen, um die Performance und Flexibilität zu steigern. Da bei FlexVol Volumes die Anzahl der LUNs beschränkt ist, die die Anzahl der Virtual Machines, einschließlich mehrerer FlexVol Volumes, einschränken, können Sie mehr Virtual Machines im VVols Datastore speichern. Durch das Hinzufügen verschiedener Volumes werden die Datastore-Funktionen erweitert, bei denen eine Kombination aus dünnen und Thick Volumes möglich ist. Auf dem Datastore können somit beide Arten von VMs erstellt werden.
+
+VASA Provider erstellt verschiedene Typen von VVols während der Bereitstellung von Virtual Machines oder der VMDK-Erstellung.
+
+* *Konfig*
++
+VMware vSphere verwendet diesen VVols-Datastore, um Konfigurationsinformationen zu speichern.
+
++
+In SAN-Implementierungen (Block) ist der Storage eine 4-GB-LUN.
+VCenter 8 erweitert die Kapazität bei Thin Provisioning auf eine LUN mit 256 GB.
+
++
+In einer NFS-Implementierung ist dies ein Verzeichnis, das VM-Konfigurationsdateien wie die vmx-Datei enthält, und Zeiger auf andere VVols-Datastores.
+
+* * Daten*
++
+Diese VVols enthält Betriebssysteminformationen und Benutzerdateien.
+
++
+Bei SAN-Implementierungen ist dies eine LUN, die die Größe der virtuellen Festplatte hat.
+
++
+In einer NFS-Implementierung handelt es sich hierbei um eine Datei, die die Größe des virtuellen Laufwerks hat.
+
+* *Tausch*
++
+Diese VVols werden erstellt, wenn die Virtual Machine eingeschaltet ist und beim Ausschalten der Virtual Machine gelöscht wird.
+
++
+Bei SAN-Implementierungen ist dies eine LUN, die die Größe des virtuellen Speichers ist.
+
++
+In einer NFS-Implementierung handelt es sich hierbei um eine Datei mit der Größe des virtuellen Speichers.
+
+* *Speicher*
++
+Diese VVols werden erstellt, wenn die Option Speicher-Snapshots bei der Erstellung eines VM-Snapshots ausgewählt ist.
+
++
+Bei SAN-Implementierungen ist dies eine LUN, die die Größe des virtuellen Speichers ist.
+
++
+In einer NFS-Implementierung handelt es sich hierbei um eine Datei mit der Größe des virtuellen Speichers.
+
+

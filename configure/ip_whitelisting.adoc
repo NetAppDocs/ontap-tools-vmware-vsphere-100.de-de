@@ -1,0 +1,37 @@
+---
+permalink: configure/ip_whitelisting.html 
+sidebar: sidebar 
+keywords:  
+summary: Mit dieser Funktion können Sie eine bestimmte ESXi-Hostadresse angeben, die für den Datastore-Mount-Vorgang zulässig ist. 
+---
+= Managen des Netzwerkzugriffs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit dieser Funktion können Sie eine bestimmte ESXi-Hostadresse angeben, die für den Datastore-Mount-Vorgang zulässig ist.
+
+Wenn Sie mehrere IP-Adressen für ESXi-Hosts haben, werden alle vom Host ermittelten IP-Adressen zu einer Exportrichtlinie hinzugefügt. Wenn Sie nicht alle IP-Adressen zur Exportrichtlinie hinzufügen möchten, geben Sie eine Einstellung für Whitelisted IP-Adressen in einer kommagetrennten Liste oder einem CIDR oder einer Kombination aller drei für jedes vCenter an.
+
+Wenn die Einstellung nicht angegeben ist, fügt die Exportrichtlinie alle IP-Adressen hinzu, die im Pre-Mount-Schritt ermittelt wurden. Wenn die Einstellung angegeben ist, fügt ONTAP-Tools nur diejenigen hinzu, die in den Whitelisted-IPs oder -Bereich fallen. Wenn keine der IPs eines Hosts zu den Whitelisted-IPs gehört, schlägt der Mount auf diesem Host fehl.
+
+Standardmäßig werden alle Host-IP's zur Exportrichtlinie hinzugefügt.
+
+Verwenden Sie die folgende API, um IP-Adressen für die Whitelisting hinzuzufügen:
+
+[listing]
+----
+patch /api/v1/vcenters/{vcguid}/settings/ip-whitelist
+
+{
+    value: string
+}
+
+GET /api/v1/vcenters/{vcguid}/settings/ip-whitelist
+
+{
+    value: string
+}
+----

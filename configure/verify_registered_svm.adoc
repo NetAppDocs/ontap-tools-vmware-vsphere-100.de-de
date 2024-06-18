@@ -1,0 +1,23 @@
+---
+permalink: configure/verify_registered_svm.html 
+sidebar: sidebar 
+keywords:  
+summary: Vergewissern Sie sich, dass die Onboarding-SVM unter VASA Provider über die vCenter UI aufgeführt ist. 
+---
+= Überprüfen Sie die registrierte SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vergewissern Sie sich, dass die Onboarding-SVM unter VASA Provider über die vCenter UI aufgeführt ist.
+
+*Schritte*
+
+. Navigieren Sie zu vCenter Server.
+. Melden Sie sich mit den Administratoranmeldeinformationen an.
+. Wählen Sie *Speicheranbieter* Aus.
+. Wählen Sie *Konfigurieren*.
+. Überprüfen Sie unter Storage-Provider/Storage Back-Ends, ob die Onboarding-SVM korrekt aufgelistet ist.
+

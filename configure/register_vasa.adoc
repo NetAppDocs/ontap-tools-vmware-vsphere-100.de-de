@@ -1,0 +1,39 @@
+---
+permalink: configure/register_vasa.html 
+sidebar: sidebar 
+keywords:  
+summary: Sie können VASA-Bereitstellung für vCenter entweder mithilfe eines selbstsignierten Zertifikats oder eines CA-signierten Zertifikats registrieren. Das selbstsignierte Zertifikat wird mithilfe des VMware CA-Handshake generiert. 
+---
+= Registrieren Sie VASA Provider in vCenter
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können VASA-Bereitstellung für vCenter entweder mithilfe eines selbstsignierten Zertifikats oder eines CA-signierten Zertifikats registrieren. Das selbstsignierte Zertifikat wird mithilfe des VMware CA-Handshake generiert.
+
+*Über diese Aufgabe*
+
+Sie müssen das CA-signierte Zertifikat in vCenter platzieren, wenn Sie die CA-signierte Zertifikatmethode verwenden.
+
+*Schritte*
+
+. Navigieren Sie zu vCenter Server.
+. Wählen Sie *Configure* > *Storage Providers*.
+. Klicken Sie auf das Symbol *Hinzufügen*.
+. Geben Sie die Verbindungsinformationen für den Speicheranbieter ein:
++
+.. Name: Jeder benutzerfreundliche Name wie "ScaleoutVP"
+.. URL `\https://<name>/virtualization/version.xml` - Der Name in der URL entspricht der virtuellen IP, die während der OVA-Bereitstellung für Single vCenter-Bereitstellung (oder) Domain-Name für Multi-vCenter-Bereitstellungen bereitgestellt wird. Fügen Sie die Zertifikate zur URL hinzu. Dieselben Zertifikate werden in vCenter veröffentlicht.
+.. Anmeldeinformationen: <VASA Provider username>/< VASA Provider password> während der OVA-Bereitstellung angegeben.
+
+
+. Klicken Sie nach der Registrierung des VASA auf *OK*.
+Stellen Sie sicher, dass sie unter Speicheranbieter aufgeführt ist und der Status Online lautet.
++
+Wenn Sie ein CA-signiertes Zertifikat in vCenter platziert haben, wird die VASA-Registrierung mit einem CA-signierten Zertifikat fortgesetzt. Andernfalls schlägt das Handshaking fehl und die Registrierung wird standardmäßig auf das SSA-Zertifikat gesetzt.
+
+. Sie können mehrere vCenters zu einer einzelnen skalierbaren vp-Instanz registrieren.
+Wiederholen Sie die oben genannten Schritte, um mehrere vCenter zu registrieren.
+

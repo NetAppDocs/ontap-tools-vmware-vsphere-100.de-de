@@ -1,0 +1,28 @@
+---
+permalink: manage/igroup_management.html 
+sidebar: sidebar 
+keywords:  
+summary: In ONTAP werden Exportrichtlinien verwendet, um Hosts auf den Volume-Datenpfad zuzugreifen, und Initiatorgruppen werden verwendet, um ESXi Hosts den Zugriff auf den LUN-Datenpfad zu ermöglichen. 
+---
+= Verwaltete iGroup- und Export-Richtlinien
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In ONTAP werden Exportrichtlinien verwendet, um Hosts einen Datenzugriff auf Volume-Pfaden zu ermöglichen und Initiatorgruppen werden verwendet, um ESXi Hosts den Datenzugriff auf dem Datenpfad mit der logischen Einheitennummer (LUN) zu ermöglichen.
+
+Wenn Datastores für virtuelle Volumes erstellt oder an Hosts in vCenter angehängt werden, müssen diese Hosts je nach Protokolltyp des Datastore Zugriff auf Volumes (NFS) oder LUNs (iSCSI) erhalten.
+
+Die Exportpolitik ist dynamisch und die neue Exportpolitik wird im Format Dreizack-UUID erstellt. Gehen Sie auf Ihrem ONTAP System Manager zu *Speicher* > *Speicher-VMs* > *[Name der Speicher-VM]* > *Einstellungen* > *Exportrichtlinien*, um die Exportrichtlinie anzuzeigen.
+
+Initiatorgruppen und Exportrichtlinien in ONTAP Tools werden effizient gemanagt und bieten folgende Vorteile:
+
+* Unterstützt migrierte Exportrichtlinien und Initiatorgruppen.
+* Die ein- und Ausgabevorgänge von Virtual Machines werden nicht unterbrochen.
+* Unterstützt das Mounten auf zusätzlichen Hosts ohne manuelles Eingreifen.
+* Minimiert die Notwendigkeit zum Verwalten der Anzahl von Initiatorgruppen und Exportrichtlinien.
+* Ein Garbage Collector löscht automatisch alle nicht verwendeten verwalteten Initiatorgruppen und Exportrichtlinien in regelmäßigen Abständen.
+* Wenn der Datastore auf Host-Cluster-Ebene bereitgestellt wird, wird die Initiatorgruppe mit allen Host-Initiatoren unter dem Host-Cluster erstellt, die der Initiatorgruppe hinzugefügt werden.
+
